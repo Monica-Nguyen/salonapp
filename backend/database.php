@@ -1,5 +1,6 @@
 <?php
 
+    // database connection
     $host = 'localhost';
     $user = 'root';
     $pwd = '';
@@ -16,6 +17,7 @@
         $conn = mysqli_connect($host, $user, $pwd, $db);
 
         return $conn;
+
 
     }
 
