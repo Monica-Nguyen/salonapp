@@ -15,7 +15,7 @@
         <h1>Employee</h1>
         <h2>Manage Clients, Client Info, Appointments, Services & Equipment</h2>
     </header>
-
+    
     <ul>
         
         <li><a href="clients.php" class="a"><i class="fa fa-user fa-2x"></i>Clients</a></li>
@@ -33,7 +33,8 @@
 
 <div class="main-content">
     <div class="header"> 
-    <br></br>All Equipment:<br></br>
+
+    <br></br>All Client Hair Information:<br></br>
 
     <?php
 
@@ -41,16 +42,19 @@
     include '../../logic/logic.php';
 
     $conn = connect();
-    $result = getEquipment($conn);
+    $result = getHairCharacteristics($conn);
 
     header("Content-Type: JSON");
     $rowNumber = 0;
     $output = array();
 
     while($row = mysqli_fetch_array($result)){
-        $output[$rowNumber]['equipmentid'] = $row['equipmentid'];
-        $output[$rowNumber]['employeeno'] = $row['employeeno'];
-        $output[$rowNumber]['name'] = $row['name'];
+        $output[$rowNumber]['clientno'] = $row['clientno'];
+        $output[$rowNumber]['colorformula'] = $row['colorformula'];
+        $output[$rowNumber]['length'] = $row['length'];
+        $output[$rowNumber]['texture'] = $row['texture'];
+        $output[$rowNumber]['style'] = $row['style'];
+        $output[$rowNumber]['notes'] = $row['notes'];
         $rowNumber++;
     }
 

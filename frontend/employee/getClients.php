@@ -15,7 +15,7 @@
         <h1>Employee</h1>
         <h2>Manage Clients, Client Info, Appointments, Services & Equipment</h2>
     </header>
-
+    
     <ul>
         
         <li><a href="clients.php" class="a"><i class="fa fa-user fa-2x"></i>Clients</a></li>
@@ -33,7 +33,8 @@
 
 <div class="main-content">
     <div class="header"> 
-    <br></br>All Equipment:<br></br>
+
+    <br></br>All Clients:<br></br>
 
     <?php
 
@@ -41,16 +42,25 @@
     include '../../logic/logic.php';
 
     $conn = connect();
-    $result = getEquipment($conn);
+    $result = getClients($conn);
 
     header("Content-Type: JSON");
     $rowNumber = 0;
     $output = array();
 
     while($row = mysqli_fetch_array($result)){
-        $output[$rowNumber]['equipmentid'] = $row['equipmentid'];
-        $output[$rowNumber]['employeeno'] = $row['employeeno'];
-        $output[$rowNumber]['name'] = $row['name'];
+        $output[$rowNumber]['clientid'] = $row['clientid'];
+        $output[$rowNumber]['salonno'] = $row['salonno'];
+        $output[$rowNumber]['phone'] = $row['phone'];
+        $output[$rowNumber]['firstname'] = $row['firstname'];
+        $output[$rowNumber]['lastname'] = $row['lastname'];
+        $output[$rowNumber]['email'] = $row['email'];
+        $output[$rowNumber]['address'] = $row['address'];
+        $output[$rowNumber]['postalcode'] = $row['postalcode'];
+        $output[$rowNumber]['city'] = $row['city'];
+        $output[$rowNumber]['stateorprovince'] = $row['stateorprovince'];
+        $output[$rowNumber]['country'] = $row['country'];
+        $output[$rowNumber]['discount'] = $row['discount'];        
         $rowNumber++;
     }
 
