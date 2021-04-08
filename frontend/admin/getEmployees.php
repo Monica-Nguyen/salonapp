@@ -63,12 +63,3 @@
     echo '<pre>'; print_r($output); echo '</pre>';
 
 ?>
-
-    </div>
-    <div class="info"> </div>
-</div>
-
-
-</body>
-</html>
-

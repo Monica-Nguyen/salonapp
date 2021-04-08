@@ -64,7 +64,7 @@
         $rowNumber++;
     }
 
-    echo '<pre>'; print_r($output); echo '</pre>';
+    echo json_encode($output, JSON_PRETTY_PRINT);
 
 ?>
     </div>
