@@ -21,7 +21,11 @@
     </ul>
 
     <div class="other-info">
+
+    <ul><a href = "../admin/admin.php" class= "admin"></i>Admin View</a></ul>
+    <ul><a href = "../employee/employee.php" class= "employee"></i>Employee View</a></ul>
     <ul><a class= "salonapp"><i class="fa fa-copyright"></i> salonapp</a></ul>
+    
     </div>
 
 </div>

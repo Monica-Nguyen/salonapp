@@ -18,22 +18,28 @@
     </header>
     
     <ul>
-        <li><a href="manageSalons.php" class="a"><i class="fa fa-home fa-2x"></i>Salons</a></li>
-        <li><a href="manageEmployees.php" class="b"><i class="fa fa-user fa-2x"></i>Employees</a></li>
+        <li><a href="salons.php" class="a"><i class="fa fa-home fa-2x"></i>Salons</a></li>
+        <li><a href="employees.php" class="b"><i class="fa fa-user fa-2x"></i>Employees</a></li>
     </ul>
 
     <div class="other-info">
+
+    <ul><a href = "../employee/employee.php" class= "customer"></i>Employee View</a></ul>
+    <ul><a href = "../customer/customer.php" class= "employee"></i>Customer View</a></ul>
     <ul><a class= "salonapp"><i class="fa fa-copyright"></i> salonapp</a></ul>
+    
     </div>
 
 </div>
 
 <div class="main-content">
+    <br>
+    
     <div class="header"> 
     <!-- text here -->
     </div>
     <div class="info">
-    <!-- text here -->
+
     </div>
 </div>
 

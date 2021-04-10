@@ -23,7 +23,11 @@
     </ul>
 
     <div class="other-info">
+
+    <ul><a href = "../employee/employee.php" class= "customer"></i>Employee View</a></ul>
+    <ul><a href = "../customer/customer.php" class= "employee"></i>Customer View</a></ul>
     <ul><a class= "salonapp"><i class="fa fa-copyright"></i> salonapp</a></ul>
+    
     </div>
 
 </div>
@@ -60,6 +64,6 @@
         $rowNumber++;
     }
 
-    echo '<pre>'; print_r($output); echo '</pre>';
+    echo json_encode($output, JSON_PRETTY_PRINT);
 
 ?>

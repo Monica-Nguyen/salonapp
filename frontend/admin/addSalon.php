@@ -1,72 +1,81 @@
+<?php 
 
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Admin</title>
-        <meta name="viewport" content="width=device-width, inital-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="../../styles.css">
-    </head>
+include 'admin.php'; 
+include '../../backend/database.php';
 
-<body>
+$conn = connect();
 
+if(isset($_POST['SubmitButton'])){
+    $phone = $_POST['phone'];
+    $email = $_POST['email'];
+    $name = $_POST['name'];
+    $address = $_POST['address'];
+    $postalcode = $_POST['postalcode'];
+    $city = $_POST['city'];
+    $stateorprovince = $_POST['stateorprovince'];
+    $country = $_POST['country'];
 
-<div class="sidebar">
-    <header>
-        <h1>Admin</h1>
-        <h2>Manage Salons and Employees</h2>
-    </header>
-    
-    <ul>
-        <li><a href="manageSalons.php" class="a"><i class="fa fa-home fa-2x"></i>Salons</a></li>
-        <li><a href="manageEmployees.php" class="b"><i class="fa fa-user fa-2x"></i>Employees</a></li>
-    </ul>
+    $result = "INSERT INTO salon(phone, email, name, address, postalcode, city, stateorprovince, country) VALUES ('$phone', '$email', '$name', '$address', '$postalcode', '$city', '$stateorprovince', '$country')";
 
-    <div class="other-info">
-    <ul><a class= "salonapp"><i class="fa fa-copyright"></i> salonapp</a></ul>
-    </div>
-
-</div>
-
-<div class="main-content">
-    <div class="header"> 
-
-    All Salons:  <br></br>
-
-    <?php
-
-    include '../../backend/database.php';
-    include '../../logic/logic.php';
-
-    $conn = connect();
-    $result = getSalons($conn);
-
-    header("Content-Type: JSON");
-    $rowNumber = 0;
-    $output = array();
-
-    while($row = mysqli_fetch_array($result)){
-        $output[$rowNumber]['salonid'] = $row['salonid'];
-        $output[$rowNumber]['phone'] = $row['phone'];
-        $output[$rowNumber]['email'] = $row['email'];
-        $output[$rowNumber]['name'] = $row['name'];
-        $output[$rowNumber]['address'] = $row['address'];
-        $output[$rowNumber]['postalcode'] = $row['postalcode'];
-        $output[$rowNumber]['city'] = $row['city'];
-        $output[$rowNumber]['stateorprovince'] = $row['stateorprovince'];
-        $output[$rowNumber]['country'] = $row['country'];
-        $rowNumber++;
+    if (mysqli_query($conn, $result)) {
+      echo "New salon added successfully!<br>";
+    } else {
+      echo "Error: " . $result . "<br>" . mysqli_error($conn);
     }
-
-    echo '<pre>'; print_r($output); echo '</pre>';
-
+    
+    mysqli_close($conn);
+}
 ?>
 
-    </div>
-    <div class="info"> </div>
-</div>
+<!DOCTYPE HTML>
+<html>
+Add a Salon:
+<head>
+  <title>Register Form</title>
+  <link rel="shortcut icon" href="#">
+</head>
+<body>
+  
+ <form action="addSalon.php" method="POST">
+  <table>
+   <tr>
+    <td>Salon Name : </td>
+    <td><input type="text" name="name" required></td>
+   </tr>
+   <tr>
+    <td>Phone Number : </td>
+    <td><input type="tel" name="phone" placeholder = "xxx xxx xxxx" pattern= "[0-9]{3} [0-9]{3} [0-9]{4}" maxlength="12" title = "10 digits required." required></td>
+   </tr>
+   <tr>
+    <td>Email : </td>
+    <td><input type="email" name="email"></td>
+   </tr> 
+   <tr>
+    <td>Address : </td>
+    <td><input type="text" name="address" required></td>
+   </tr>
+   <tr>
+    <td>Postal Code : </td>
+    <td><input type="text" name="postalcode" required></td>
+   </tr>
+   <tr>
+    <td>City : </td>
+    <td><input type="text" name="city" required></td>
+   </tr>
+   <tr>
+    <td>State/Province : </td>
+    <td><input type="text" name="stateorprovince" required></td>
+   </tr>
+   <tr>
+    <td>Country : </td>
+    <td><input type="text" name="country" required></td>
+   </tr>
+   <tr>
+    <td><input type="submit" value="Submit" name="SubmitButton"></td>
+    </tr>
 
+  </table>
+</form>
 
 </body>
 </html>
-
