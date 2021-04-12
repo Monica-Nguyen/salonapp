@@ -10,8 +10,7 @@ include 'admin.php';
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-
-<form action="getSalons.php"><tr>
+<form action="getSalons.php" method = "GET"><tr>
 <td><input type="submit" value="View All Salons" name="getSalons"></td>
 </tr></form>    
 

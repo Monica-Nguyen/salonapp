@@ -1,6 +1,7 @@
 <?php
     
     include 'admin.php'; 
+    
     include '../../backend/database.php';
     include '../../logic/logic.php';
 
@@ -25,6 +26,6 @@
     }
 
     echo json_encode($output, JSON_PRETTY_PRINT);
-
+    
 ?>
 

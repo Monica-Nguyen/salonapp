@@ -36,7 +36,6 @@
     <br>
     
     <div class="header"> 
-    <!-- text here -->
     </div>
     <div class="info">
 

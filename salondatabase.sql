@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2021 at 01:00 AM
+-- Generation Time: Apr 12, 2021 at 10:47 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -32,8 +32,8 @@ CREATE TABLE `appointment` (
   `idclient` int(11) NOT NULL,
   `idstylist` int(11) DEFAULT NULL,
   `idreceptionist` int(11) DEFAULT NULL,
-  `date/time` datetime NOT NULL,
-  `enddate/time` datetime NOT NULL,
+  `startdatetime` datetime NOT NULL,
+  `enddatetime` datetime NOT NULL,
   `previousapt` date DEFAULT NULL,
   `previousservice` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -42,7 +42,7 @@ CREATE TABLE `appointment` (
 -- Dumping data for table `appointment`
 --
 
-INSERT INTO `appointment` (`idservice`, `idclient`, `idstylist`, `idreceptionist`, `date/time`, `enddate/time`, `previousapt`, `previousservice`) VALUES
+INSERT INTO `appointment` (`idservice`, `idclient`, `idstylist`, `idreceptionist`, `startdatetime`, `enddatetime`, `previousapt`, `previousservice`) VALUES
 (1, 1, 1, 1, '2021-04-28 16:00:00', '2021-04-28 17:00:00', '2021-03-27', 'haircut'),
 (2, 2, 2, 2, '2021-04-29 16:00:00', '2021-04-29 17:00:00', '2021-03-28', 'color'),
 (3, 1, 1, 1, '2021-03-27 15:00:00', '2021-03-27 16:00:00', NULL, NULL),
@@ -191,7 +191,7 @@ CREATE TABLE `salon` (
   `email` varchar(75) NOT NULL,
   `name` varchar(50) NOT NULL,
   `address` varchar(50) NOT NULL,
-  `postal code` varchar(50) NOT NULL,
+  `postalcode` varchar(50) NOT NULL,
   `city` varchar(50) NOT NULL,
   `stateorprovince` varchar(50) NOT NULL,
   `country` varchar(50) NOT NULL
@@ -201,9 +201,14 @@ CREATE TABLE `salon` (
 -- Dumping data for table `salon`
 --
 
-INSERT INTO `salon` (`salonid`, `phone`, `email`, `name`, `address`, `postal code`, `city`, `stateorprovince`, `country`) VALUES
+INSERT INTO `salon` (`salonid`, `phone`, `email`, `name`, `address`, `postalcode`, `city`, `stateorprovince`, `country`) VALUES
 (1, '(403)111-1111', 'info@calgarysalon.com', 'CalgarySalon', '123 Address NW', 'T2L2L5', 'Calgary', 'Alberta', 'Canada'),
-(2, '(702)222-2222', 'info@lasvegassalon.com', 'LasVegasSalon', '321 North Street NW', '88901', 'Las Vegas', 'Nevada', 'USA');
+(2, '(702)222-2222', 'info@lasvegassalon.com', 'LasVegasSalon', '321 North Street NW', '88901', 'Las Vegas', 'Nevada', 'USA'),
+(8, '403 189 1023', 'info@SimpleSalon.com', 'SimpleSalon', '2309 Circle Ave SE', 'TP0 1H9', 'Calgary', 'Alberta', 'Canada'),
+(9, '403 190 1020', 'info@BarberShop.com', 'Barber Shop', '1230 Ave Centre St', 'T2N 2M2', 'Calgary', 'Alberta', 'Canada'),
+(10, '403 199 1000', 'info@SalonWorld.com', 'SalonWorld', '2423 Downtown Ave', 'T2L 4M2', 'Calgary', 'Alberta', 'Canada'),
+(11, '403 124 1391', 'info@APlace.com', 'APlace', '2323 Somewhere Ave', 'T2L 2M1', 'Calgary', 'Alberta', 'Canada'),
+(15, '403 241 2828', 'sdfsd@g.com', 'dfg', 'sadfdsf', 'jkhjkh', 'hjkhj', 'hjkhjh', 'hkjhkj');
 
 -- --------------------------------------------------------
 
@@ -360,7 +365,7 @@ ALTER TABLE `receptionist`
 -- AUTO_INCREMENT for table `salon`
 --
 ALTER TABLE `salon`
-  MODIFY `salonid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `salonid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `service`

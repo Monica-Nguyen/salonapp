@@ -13,7 +13,7 @@ body{
 /*Setting dimensions and styles of the side navigation bar*/
 .sidebar{
     height:100%;
-    width:275px;
+    width:300px;
     position:relative;
     background: white;
     box-shadow: 0px 2px 10px #999;
