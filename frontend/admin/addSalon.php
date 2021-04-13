@@ -1,53 +1,7 @@
 <?php 
 
 include 'admin.php'; 
-include '../../backend/database.php';
-include '../../logic/logic.php';
 
-$conn = connect();
-$result = getSalons($conn);
-
-if(isset($_POST['SubmitButton'])){
-    $phone = $_POST['phone'];
-    $email = $_POST['email'];
-    $name = $_POST['name'];
-    $address = $_POST['address'];
-    $postalcode = $_POST['postalcode'];
-    $city = $_POST['city'];
-    $stateorprovince = $_POST['stateorprovince'];
-    $country = $_POST['country'];
-
-    $sql = "INSERT INTO salon(phone, email, name, address, postalcode, city, stateorprovince, country) VALUES ('$phone', '$email', '$name', '$address', '$postalcode', '$city', '$stateorprovince', '$country')";
-
-    if (mysqli_query($conn, $sql)) {
-      echo "New salon added successfully!<br>";
-
-      header("Content-Type: JSON");
-      $rowNumber = 0;
-      $output = array();
-  
-      while($row = mysqli_fetch_array($result)){
-          $output[$rowNumber]['salonid'] = $row['salonid'];
-          $output[$rowNumber]['phone'] = $row['phone'];
-          $output[$rowNumber]['email'] = $row['email'];
-          $output[$rowNumber]['name'] = $row['name'];
-          $output[$rowNumber]['address'] = $row['address'];
-          $output[$rowNumber]['postalcode'] = $row['postalcode'];
-          $output[$rowNumber]['city'] = $row['city'];
-          $output[$rowNumber]['stateorprovince'] = $row['stateorprovince'];
-          $output[$rowNumber]['country'] = $row['country'];
-          $rowNumber++;
-      }
-  
-      echo json_encode($output, JSON_PRETTY_PRINT);
-
-
-    } else {
-      echo "Error: " . $result . "<br>" . mysqli_error($conn);
-    }
-    
-    mysqli_close($conn);
-}
 ?>
 
 <!DOCTYPE HTML>
@@ -60,7 +14,7 @@ Add a Salon:
 </head>
 <body>
   
- <form action="addSalon.php" method="POST">
+ <form action="addSalonLogic.php" method="POST">
   <table>
    <tr>
     <td>Salon Name : </td>

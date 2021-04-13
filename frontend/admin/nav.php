@@ -1,4 +1,3 @@
-
 <html>
     <head>
         <meta charset="utf-8">
@@ -33,13 +32,15 @@
 </div>
 
 <div class="main-content">
+    <br>
+    
     <div class="header"> 
+    </div>
+    <div class="info">
 
-    All Employees:  <br></br>
-
-    <?php
-    include 'getEmployeeLogic.php';
-    ?>
-
+    </div>
 </div>
-</div>
+
+
+</body>
+</html>
