@@ -8,9 +8,9 @@
     $employeeName = $_POST['employeeName'];
     $startdatetime = $_POST['startdatetime'];
     $enddatetime = $_POST['enddatetime'];
-    $serviceID = $_POST['serviceID'];
+    $serviceName = $_POST['serviceName'];
     $previousapt = $_POST['previousapt'];
-    $previousservice = $_POST['previousservice'];
+    $previousService = $_POST['previousService'];
 
     $getClientID = "SELECT clientid FROM client where firstname='".$clientName."'";
     $result = mysqli_query($conn, $getClientID);
@@ -18,6 +18,14 @@
     while($row = mysqli_fetch_array($result)){
         $idclient = $row['clientid'];
     }
+
+    $getServiceID = "SELECT serviceid FROM service where servicename='".$serviceName."'";
+    $result = mysqli_query($conn, $getServiceID);
+    $idservice = 0;
+    while($row = mysqli_fetch_array($result)){
+        $idservice = $row['serviceid'];
+    }
+
 
     $getEmployeeID = "SELECT employeeid FROM employee where firstname='".$employeeName."'";
     $result = mysqli_query($conn, $getEmployeeID);
@@ -27,7 +35,7 @@
     }
     
 
-    $sql = "INSERT INTO appointment(idservice, idclient, idstylist, startdatetime, enddatetime, previousapt, previousservice) VALUES ('$serviceID', '$idclient', '$idstylist', '$startdatetime', '$enddatetime', '$previousapt', '$previousservice')";
+    $sql = "INSERT INTO appointment(idservice, idclient, idstylist, startdatetime, enddatetime, previousapt, previousservice) VALUES ('$idservice', '$idclient', '$idstylist', '$startdatetime', '$enddatetime', '$previousapt', '$previousService')";
 
 
     if (mysqli_query($conn, $sql)) {
