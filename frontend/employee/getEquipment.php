@@ -36,27 +36,8 @@
     <br></br>All Equipment:<br></br>
 
     <?php
-
-    include '../../backend/database.php';
-    include '../../logic/logic.php';
-
-    $conn = connect();
-    $result = getEquipment($conn);
-
-    header("Content-Type: JSON");
-    $rowNumber = 0;
-    $output = array();
-
-    while($row = mysqli_fetch_array($result)){
-        $output[$rowNumber]['equipmentid'] = $row['equipmentid'];
-        $output[$rowNumber]['employeeno'] = $row['employeeno'];
-        $output[$rowNumber]['name'] = $row['name'];
-        $rowNumber++;
-    }
-
-    echo '<pre>'; print_r($output); echo '</pre>';
-
-?>
+    include 'getEquipmentLogic.php';
+    ?>
     </div>
     <div class="info">
     <!-- text here -->

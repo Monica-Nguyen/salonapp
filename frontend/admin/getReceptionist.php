@@ -35,16 +35,13 @@
 </div>
 
 <div class="main-content">
-    <br>
-    
     <div class="header"> 
-    </div>
-    <div class="info">
 
-    </div>
+    All Receptionists:  <br></br>
+
+    <?php
+    include 'getReceptionistLogic.php';
+    ?>
+
 </div>
-
-
-</body>
-</html>
-
+</div>

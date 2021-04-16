@@ -1,6 +1,8 @@
 <?php 
 
 include 'admin.php'; 
+include '../../backend/database.php';
+include '../../logic/logic.php';
 
 ?>
 

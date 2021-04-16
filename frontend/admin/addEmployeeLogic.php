@@ -25,9 +25,9 @@
 
     $sql = "INSERT INTO employee(idsalon, firstname, lastname, phone, email, address, postalcode, city, stateorprovince, country) VALUES ('$idsalon', '$firstname', '$lastname', '$phone', '$email', '$address', '$postalcode', '$city', '$stateorprovince', '$country')";
 
-
+    header("Content-Type: JSON");
     if (mysqli_query($conn, $sql)) {
-        header("Content-Type: JSON");
+
         echo json_encode("New employee added successfully!", JSON_PRETTY_PRINT);
 
         $output = array();

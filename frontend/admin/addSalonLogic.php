@@ -17,14 +17,12 @@ $sql = "INSERT INTO salon(phone, email, name, address, postalcode, city, stateor
 
 if (mysqli_query($conn, $sql)) {
     echo "New salon added successfully!\n";
+    header("Content-Type: JSON");
 
-    header("Content-Type: application/json");
-    $rowNumber = 0;
     $output = array();
 
     array_push($output, $phone, $email, $name, $address, $postalcode, $city, $stateorprovince, $country);
         
-    
 
     echo json_encode($output, JSON_PRETTY_PRINT);
 

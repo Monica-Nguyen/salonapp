@@ -1,25 +1,23 @@
 <?php
-
+include '../../backend/database.php';
 include 'admin.php'; 
 
 ?>
-
 <br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-<form action="addSalon.php"><tr>
-<td><input type="submit" value="Add a Salon" name="addSalon"></td>
+<form action="addStylist.php"><tr>
+<td><input type="submit" value="Add a Stylist" name="addSalon"></td>
 </tr></form>
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-<form action="getSalons.php" method = "GET"><tr>
-<td><input type="submit" value="View All Salons" name="getSalons"></td>
+<form action="getStylist.php" method = "GET"><tr>
+<td><input type="submit" value="View All Stylists" name="getSalons"></td>
 </tr></form>    
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-<form action="deleteSalon.php"><tr>
-<td><input type="submit" value="Delete Salon" name="deleteSalons"></td>
+<form action="deleteStylist.php"><tr>
+<td><input type="submit" value="Delete Stylist" name="deleteSalons"></td>
 </tr></form>    
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br>

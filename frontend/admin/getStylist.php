@@ -35,16 +35,13 @@
 </div>
 
 <div class="main-content">
-    <br>
-    
     <div class="header"> 
-    </div>
-    <div class="info">
 
-    </div>
+    All Employees:  <br></br>
+
+    <?php
+    include 'getStylistLogic.php';
+    ?>
+
 </div>
-
-
-</body>
-</html>
-
+</div>
