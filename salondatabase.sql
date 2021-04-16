@@ -57,7 +57,7 @@ INSERT INTO `appointment` (`idservice`, `idclient`, `idstylist`, `idreceptionist
 CREATE TABLE `client` (
   `clientid` int(11) NOT NULL,
   `salonno` int(11) NOT NULL,
-  `phone` varchar(50) NOT NULL,
+  `phone` varchar(50) NOT NULL, 
   `firstname` varchar(50) NOT NULL,
   `lastname` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
@@ -218,12 +218,7 @@ INSERT INTO `salon` (`salonid`, `phone`, `email`, `name`, `address`, `postalcode
 
 CREATE TABLE `service` (
   `serviceid` int(11) NOT NULL,
-  `haircut` char(1) DEFAULT NULL,
-  `updo` char(1) DEFAULT NULL,
-  `perm` char(1) DEFAULT NULL,
-  `shampoo` char(1) DEFAULT NULL,
-  `styling` char(1) DEFAULT NULL,
-  `color` char(1) DEFAULT NULL,
+  `servicename` varchar(50) NOT NULL,
   `cost` varchar(50) DEFAULT NULL,
   `equipmentno` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -232,13 +227,13 @@ CREATE TABLE `service` (
 -- Dumping data for table `service`
 --
 
-INSERT INTO `service` (`serviceid`, `haircut`, `updo`, `perm`, `shampoo`, `styling`, `color`, `cost`, `equipmentno`) VALUES
-(1, 'y', 'y', NULL, 'y', NULL, NULL, '$150', NULL),
-(2, NULL, NULL, NULL, 'y', 'y', NULL, '$80', NULL),
-(3, 'y', NULL, NULL, NULL, NULL, NULL, '$50', NULL),
-(4, NULL, NULL, NULL, NULL, NULL, 'y', '$250', 4);
+INSERT INTO `service` (`serviceid`, `servicename`, `cost`, `equipmentno`) VALUES
+(1, 'haircut', '$150', NULL),
+(2, 'updo', '$80', 2),
+(3, 'perm', '$50', NULL),
+(4, 'color', '$250', 4);
 
--- --------------------------------------------------------
+----------------------------------------------------------
 
 --
 -- Table structure for table `stylist`
