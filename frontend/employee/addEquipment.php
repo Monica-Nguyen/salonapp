@@ -1,6 +1,6 @@
 <?php 
 
-include '../admin/admin.php'; 
+include 'employee.php';
 include '../../backend/database.php';
 include '../../logic/logic.php';
 ?>
@@ -18,7 +18,7 @@ Add Equipment:
  <form action="addEquipmentLogic.php" method="POST">
   <table>
    <tr>
-    <td>Equimpment Description: </td>
+    <td>Equipment Description: </td>
     <td>
       <input type="text" name="equipmentName" required>
     </td>

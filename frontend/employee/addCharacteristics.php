@@ -1,6 +1,6 @@
 <?php 
 
-include '../admin/admin.php'; 
+include 'employee.php';
 include '../../backend/database.php';
 include '../../logic/logic.php';
 ?>

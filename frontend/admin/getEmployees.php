@@ -20,6 +20,8 @@
     <ul>
         <li><a href="salons.php" class="a"><i class="fa fa-home fa-2x"></i>Salons</a></li>
         <li><a href="employees.php" class="b"><i class="fa fa-user fa-2x"></i>Employees</a></li>
+        <li><a href="stylists.php" class="c"><i class="fa fa-scissors fa-2x"></i>Stylists</a></li>
+        <li><a href="receptionists.php" class="d"><i class="fa fa-user fa-2x"></i>Receptionists</a></li>
     </ul>
 
     <div class="other-info">

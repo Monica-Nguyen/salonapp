@@ -1,6 +1,5 @@
 <?php 
-
-include '../admin/admin.php'; 
+include 'employee.php';
 include '../../backend/database.php';
 include '../../logic/logic.php';
 ?>
@@ -47,12 +46,13 @@ Add an Appointment:
    </tr>
     
    <tr>
-    <td>Service ID: </td>
+    <td>Service Wanted: </td>
     <td>
-      <input type="text" name="serviceID" required>
+      <select name="serviceName"> 
+        <?php include 'getServiceNames.php'?>
+      </select>
     </td>
    </tr>
-   <tr>
     <td>Previous Appointment: </td>
     <td>
       <input type="date" id="previousapt" name="previousapt" required>
@@ -62,7 +62,9 @@ Add an Appointment:
    <tr>
     <td>Previous Service: </td>
     <td>
-      <input type="text" name="previousservice" required>
+      <select name="previousService"> 
+        <?php include 'getServiceNames.php'?>
+      </select>
     </td>
    </tr>
    <tr>

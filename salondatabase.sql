@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2021 at 10:47 PM
+-- Generation Time: Apr 17, 2021 at 07:21 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -105,7 +105,15 @@ INSERT INTO `employee` (`employeeid`, `idsalon`, `firstname`, `lastname`, `phone
 (1, 1, 'Sam', 'Brown', '(403)444-2422', 'sam@gmail.com', '555 Circle Ave NE', 'T0P L3M', 'Calgary', 'Alberta', 'Canada'),
 (2, 1, 'Crystal', 'Johnson', '(403)999-1234', 'crystal@hotmail.com', '3213 West Ave SW', 'T6M 4LM', 'Calgary', 'Alberta', 'Canada'),
 (3, 2, 'Max', 'White', '(702)222-2314', 'max@yahoo.com', '48 Avenue SE', '88910', 'Las Vegas', 'Nevada', 'USA'),
-(4, 2, 'Melissa', 'Brown', '(702)555-5555', 'melissa@gmail.com', '2039 Circle Centre SW', '89125', 'Las Vegas', 'Nevada', 'USA');
+(4, 2, 'Melissa', 'Brown', '(702)555-5555', 'melissa@gmail.com', '2039 Circle Centre SW', '89125', 'Las Vegas', 'Nevada', 'USA'),
+(10, 1, 'Rawr', 'Lmnop', '403 555 6666', 'zxc@gmail.com', '123 Tufg Rd', 'T3L ABC', 'Calgary', 'AB', 'Canada'),
+(11, 1, 'Rawr', 'Lmnop', '403 555 6666', 'zxc@gmail.com', '123 Tufg Rd', 'T3L ABC', 'Calgary', 'AB', 'Canada'),
+(34, 11, 'Bonny', 'Bonny', '403 404 0049', 'rawr@gmail.com', '123 tusc road', 'T3L ABC', 'Calgary', 'AB', 'Canada'),
+(35, 11, 'Bonny', 'Bonny', '403 404 0049', 'rawr@gmail.com', '123 tusc road', 'T3L ABC', 'Calgary', 'AB', 'Canada'),
+(37, 1, 'Laura', 'Hills', '403 222 2235', 'Laura@gmail.com', '2823 Avenue', '263563', 'Calgary', 'Alberta', 'Canada'),
+(39, 1, 'Laura', 'Hills', '403 222 2235', 'Laura@gmail.com', '2823 Avenue', '263563', 'Calgary', 'Alberta', 'Canada'),
+(40, 1, 'Sam', 'Brown', '123 456 7894', 'Sam@gmail.com', '123', '123', 'Calgary', 'Alberta', 'Canada'),
+(41, 1, 'Laura', 'Hills', '403 222 2235', 'Laura@gmail.com', '2823 Avenue', '263563', 'Calgary', 'Alberta', 'Canada');
 
 -- --------------------------------------------------------
 
@@ -158,7 +166,7 @@ CREATE TABLE `haircharacteristics` (
 
 INSERT INTO `haircharacteristics` (`clientno`, `colorformula`, `length`, `texture`, `style`, `notes`) VALUES
 (1, NULL, NULL, NULL, 'pixie', NULL),
-(2, 'Schwarzkopf 4N Permanent Color', NULL, 'curly', 'long bob', 'Went to Mexico in January!');
+(2, '2N', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -208,7 +216,7 @@ INSERT INTO `salon` (`salonid`, `phone`, `email`, `name`, `address`, `postalcode
 (9, '403 190 1020', 'info@BarberShop.com', 'Barber Shop', '1230 Ave Centre St', 'T2N 2M2', 'Calgary', 'Alberta', 'Canada'),
 (10, '403 199 1000', 'info@SalonWorld.com', 'SalonWorld', '2423 Downtown Ave', 'T2L 4M2', 'Calgary', 'Alberta', 'Canada'),
 (11, '403 124 1391', 'info@APlace.com', 'APlace', '2323 Somewhere Ave', 'T2L 2M1', 'Calgary', 'Alberta', 'Canada'),
-(15, '403 241 2828', 'sdfsd@g.com', 'dfg', 'sadfdsf', 'jkhjkh', 'hjkhj', 'hjkhjh', 'hkjhkj');
+(30, '403 254 3323', 'info@Hair.com', 'HairPlace', '1192 Ave NE', 'T3M 2N1', 'Calgary', 'Alberta', 'Canada');
 
 -- --------------------------------------------------------
 
@@ -218,12 +226,7 @@ INSERT INTO `salon` (`salonid`, `phone`, `email`, `name`, `address`, `postalcode
 
 CREATE TABLE `service` (
   `serviceid` int(11) NOT NULL,
-  `haircut` char(1) DEFAULT NULL,
-  `updo` char(1) DEFAULT NULL,
-  `perm` char(1) DEFAULT NULL,
-  `shampoo` char(1) DEFAULT NULL,
-  `styling` char(1) DEFAULT NULL,
-  `color` char(1) DEFAULT NULL,
+  `servicename` varchar(50) NOT NULL,
   `cost` varchar(50) DEFAULT NULL,
   `equipmentno` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -232,11 +235,11 @@ CREATE TABLE `service` (
 -- Dumping data for table `service`
 --
 
-INSERT INTO `service` (`serviceid`, `haircut`, `updo`, `perm`, `shampoo`, `styling`, `color`, `cost`, `equipmentno`) VALUES
-(1, 'y', 'y', NULL, 'y', NULL, NULL, '$150', NULL),
-(2, NULL, NULL, NULL, 'y', 'y', NULL, '$80', NULL),
-(3, 'y', NULL, NULL, NULL, NULL, NULL, '$50', NULL),
-(4, NULL, NULL, NULL, NULL, NULL, 'y', '$250', 4);
+INSERT INTO `service` (`serviceid`, `servicename`, `cost`, `equipmentno`) VALUES
+(1, 'haircut', '$150', NULL),
+(2, 'styling', '$80', NULL),
+(3, 'color', '$50', NULL),
+(4, 'shampoo', '$250', 4);
 
 -- --------------------------------------------------------
 
@@ -255,7 +258,8 @@ CREATE TABLE `stylist` (
 
 INSERT INTO `stylist` (`employeenumber`, `idhairstylist`) VALUES
 (2, 1),
-(4, 2);
+(4, 2),
+(37, 3);
 
 --
 -- Indexes for dumped tables
@@ -347,7 +351,7 @@ ALTER TABLE `client`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `employeeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `employeeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `equipment`
@@ -365,7 +369,7 @@ ALTER TABLE `receptionist`
 -- AUTO_INCREMENT for table `salon`
 --
 ALTER TABLE `salon`
-  MODIFY `salonid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `salonid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `service`
@@ -377,7 +381,7 @@ ALTER TABLE `service`
 -- AUTO_INCREMENT for table `stylist`
 --
 ALTER TABLE `stylist`
-  MODIFY `idhairstylist` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idhairstylist` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

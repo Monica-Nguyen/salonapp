@@ -12,12 +12,7 @@ $output = array();
 
 while($row = mysqli_fetch_array($result)){
     $output[$rowNumber]['serviceid'] = $row['serviceid'];
-    $output[$rowNumber]['haircut'] = $row['haircut'];
-    $output[$rowNumber]['updo'] = $row['updo'];
-    $output[$rowNumber]['perm'] = $row['perm'];
-    $output[$rowNumber]['shampoo'] = $row['shampoo'];
-    $output[$rowNumber]['styling'] = $row['styling'];
-    $output[$rowNumber]['color'] = $row['color'];
+    $output[$rowNumber]['servicename'] = $row['servicename'];
     $output[$rowNumber]['cost'] = $row['cost'];
     $output[$rowNumber]['equipmentno'] = $row['equipmentno'];
     

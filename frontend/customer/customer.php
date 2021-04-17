@@ -17,7 +17,7 @@
     </header>
     
     <ul>
-        <li><a href="appointments.php" class="a"><i class="fa fa-calendar fa-2x"></i>Appointments</a></li>
+        <li><a href="bookAppointment.php" class="a"><i class="fa fa-calendar fa-2x"></i>Appointments</a></li>
     </ul>
 
     <div class="other-info">
