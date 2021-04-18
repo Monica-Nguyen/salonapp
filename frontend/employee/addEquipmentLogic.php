@@ -5,9 +5,9 @@
     $conn = connect();
 
     $equipmentName = $_POST['equipmentName'];
-    $firstname = $_POST['firstname'];
+    $employeeName = $_POST['employeeName'];
 
-    $getEmployeeID = "SELECT employeeid FROM employee where firstname='".$firstname."'";
+    $getEmployeeID = "SELECT employeeid FROM employee where firstname='".$employeeName."'";
     $result = mysqli_query($conn, $getEmployeeID);
     $employeeno = 0;
     while($row = mysqli_fetch_array($result)){

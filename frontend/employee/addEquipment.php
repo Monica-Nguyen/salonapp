@@ -24,9 +24,11 @@ Add Equipment:
     </td>
    </tr>
    <tr>
-    <td>Employee First Name: </td>
+    <td>Employee: </td>
     <td>
-      <input type="text" name="firstname" required>
+    <select name="employeeName"> 
+        <?php include 'getEmployeeNames.php'?>
+      </select>
     </td>
    </tr>
    <tr>
