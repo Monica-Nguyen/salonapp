@@ -22,7 +22,11 @@
     if (mysqli_query($conn, $sql)) {
         header("Content-Type: JSON");
         echo json_encode("New service added successfully!", JSON_PRETTY_PRINT);
+        $output = array();
 
+        array_push($output, $serviceOffered, $serviceCost, $equipmentno);
+
+        echo json_encode($output, JSON_PRETTY_PRINT);
 
     } else {
         echo "Error: ". mysqli_error($conn);

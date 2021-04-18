@@ -4,17 +4,17 @@
 
     $conn = connect();
 
-    $salonName = $_POST['salonName'];
-    $firstname = $_POST['firstname'];
-    $lastname = $_POST['lastname'];
-    $phone = $_POST['phone'];
-    $email = $_POST['email'];
-    $address = $_POST['address'];
-    $postalcode = $_POST['postalcode'];
-    $city = $_POST['city'];
-    $stateorprovince = $_POST['stateorprovince'];
-    $country = $_POST['country'];
-    $discount = $_POST['discount'];
+    $salonName = $_POST['salonName'] ?? NULL;
+    $firstname = $_POST['firstname'] ?? NULL;
+    $lastname = $_POST['lastname'] ?? NULL;
+    $phone = $_POST['phone'] ?? NULL;
+    $email = $_POST['email'] ?? NULL;
+    $address = $_POST['address'] ?? NULL;
+    $postalcode = $_POST['postalcode'] ?? NULL;
+    $city = $_POST['city'] ?? NULL;
+    $stateorprovince = $_POST['stateorprovince'] ?? NULL;
+    $country = $_POST['country'] ?? NULL;
+    $discount = $_POST['discount'] ?? NULL;
 
     $getSalonID = "SELECT salonid FROM salon where name='".$salonName."'";
     $result = mysqli_query($conn, $getSalonID);
@@ -30,6 +30,12 @@
     if (mysqli_query($conn, $sql)) {
         header("Content-Type: JSON");
         echo json_encode("Client added successfully!", JSON_PRETTY_PRINT);
+        $output = array();
+
+        array_push($output, $salonno, $phone, $firstname, $lastname, $email, $address, $postalcode, $city, $stateorprovince, $country, $discount);
+
+        echo json_encode($output, JSON_PRETTY_PRINT);
+
     } else {
         echo "Error: ". mysqli_error($conn);
     }
