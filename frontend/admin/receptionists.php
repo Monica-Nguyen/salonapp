@@ -4,7 +4,6 @@ include 'admin.php';
 
 ?>
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 <form action="addReceptionist.php"><tr>
 <td><input type="submit" value="Add a Receptionist" name="addSalon"></td>
@@ -24,6 +23,6 @@ include 'admin.php';
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-<!-- <form action="editSalon.php"><tr>
-<td><input type="submit" value="Edit Salon" name="editSalons"></td>
-</tr></form>     -->
+<form action="editReceptionist.php"><tr>
+<td><input type="submit" value="Edit Receptionist" name="editSalons"></td>
+</tr></form>

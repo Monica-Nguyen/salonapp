@@ -6,7 +6,7 @@ include 'employee.php';
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-<form action="addServices.php"><tr>
+<form action="addService.php"><tr>
 <td><input type="submit" value="Add Services" name="addSalon"></td>
 </tr></form>
 

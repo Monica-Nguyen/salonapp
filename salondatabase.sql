@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2021 at 07:21 AM
+-- Generation Time: Apr 18, 2021 at 08:25 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -20,6 +20,68 @@ SET time_zone = "+00:00";
 --
 -- Database: `salondatabase`
 --
+
+DELIMITER $$
+--
+-- Procedures
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllAppointments` (IN `serviceid` INT)  BEGIN
+	SELECT a.startdatetime, a.enddatetime, s.servicename, c.firstname, c.lastname, e.firstname, e.lastname
+    FROM appointment a
+    WHERE a.idservice = s.serviceid AND a.idclient = c.clientid AND a.idstylist = s2.idhairstylist AND a.idreceptionist = r.receptionistid AND s2.employeenumber = e.employeeid;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllClients` (IN `clientid` INT)  BEGIN
+	SELECT s.name, c.phone, c.firstname, c.lastname, c.email, c.address, c.postalcode, c.city, c.stateorprovince, c.country, c.discount
+    FROM client AS c
+    JOIN salon AS s ON c.salonno = s.salonid;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllEmployees` (IN `employeeid` INT)  BEGIN
+	SELECT e.firstname, e.lastname, e.phone, e.email, e.address, e.postalcode, e.city, e.stateorprovince, e.country, s.name
+    FROM employee as e
+    INNER JOIN salon AS s ON e.idsalon = s.salonid;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllEquipmentList` (IN `equipmentid` INT)  BEGIN
+	SELECT e.name FROM equipment AS e;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllEquipmentOwned` (IN `equipmentid` INT)  BEGIN
+	SELECT e.name, e2.firstname, e2.lastname
+    FROM equipment as e
+    INNER JOIN employee as e2 ON e.employeeno = e2.employeeid;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllHairCharacteristics` (IN `clientno` INT)  BEGIN
+	SELECT h1.colorformula, h1.length, h1.texture, h1.style, h1.notes, c1.firstname, c1.lastname, c1.email, c1.phone, c1.discount
+    FROM haircharacteristics h1
+    INNER JOIN client c1 ON h1.clientno = c1.clientid;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllReceptionists` (IN `receptionistid` INT)  BEGIN
+	SELECT e.firstname, e.lastname, e.phone, e.email, e.address, e.postalcode, e.city, e.stateorprovince, e.country, s.name
+    FROM receptionist r
+    JOIN employee e ON e.employeeid = r.employeeid 
+    JOIN salon s ON e.idsalon = s.salonid;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllSalons` (IN `salonid` INT)  BEGIN
+	SELECT * FROM salon;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllServices` (IN `serviceid` INT)  BEGIN
+	SELECT * FROM service;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllStylists` (IN `stylistid` INT)  BEGIN
+	SELECT e.firstname, e.lastname, e.phone, e.email, e.address, e.postalcode, e.city, e.stateorprovince, e.country, s2.name
+    FROM employee e 
+    JOIN stylist s ON s.employeenumber = e.employeeid
+    JOIN salon s2 ON e.idsalon = s2.salonid;
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -109,11 +171,7 @@ INSERT INTO `employee` (`employeeid`, `idsalon`, `firstname`, `lastname`, `phone
 (10, 1, 'Rawr', 'Lmnop', '403 555 6666', 'zxc@gmail.com', '123 Tufg Rd', 'T3L ABC', 'Calgary', 'AB', 'Canada'),
 (11, 1, 'Rawr', 'Lmnop', '403 555 6666', 'zxc@gmail.com', '123 Tufg Rd', 'T3L ABC', 'Calgary', 'AB', 'Canada'),
 (34, 11, 'Bonny', 'Bonny', '403 404 0049', 'rawr@gmail.com', '123 tusc road', 'T3L ABC', 'Calgary', 'AB', 'Canada'),
-(35, 11, 'Bonny', 'Bonny', '403 404 0049', 'rawr@gmail.com', '123 tusc road', 'T3L ABC', 'Calgary', 'AB', 'Canada'),
-(37, 1, 'Laura', 'Hills', '403 222 2235', 'Laura@gmail.com', '2823 Avenue', '263563', 'Calgary', 'Alberta', 'Canada'),
-(39, 1, 'Laura', 'Hills', '403 222 2235', 'Laura@gmail.com', '2823 Avenue', '263563', 'Calgary', 'Alberta', 'Canada'),
-(40, 1, 'Sam', 'Brown', '123 456 7894', 'Sam@gmail.com', '123', '123', 'Calgary', 'Alberta', 'Canada'),
-(41, 1, 'Laura', 'Hills', '403 222 2235', 'Laura@gmail.com', '2823 Avenue', '263563', 'Calgary', 'Alberta', 'Canada');
+(37, 1, 'Laura', 'Hills', '403 222 2235', 'Laura@gmail.com', '2823 Avenue', '263563', 'Calgary', 'Alberta', 'Canada');
 
 -- --------------------------------------------------------
 
@@ -236,10 +294,10 @@ CREATE TABLE `service` (
 --
 
 INSERT INTO `service` (`serviceid`, `servicename`, `cost`, `equipmentno`) VALUES
-(1, 'haircut', '$150', NULL),
-(2, 'styling', '$80', NULL),
-(3, 'color', '$50', NULL),
-(4, 'shampoo', '$250', 4);
+(1, 'haircut', '$50', NULL),
+(2, 'styling', '$25', NULL),
+(3, 'color', '$150', NULL),
+(4, 'shampoo', '$15', 4);
 
 -- --------------------------------------------------------
 
@@ -363,7 +421,7 @@ ALTER TABLE `equipment`
 -- AUTO_INCREMENT for table `receptionist`
 --
 ALTER TABLE `receptionist`
-  MODIFY `receptionistid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `receptionistid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `salon`
@@ -381,7 +439,7 @@ ALTER TABLE `service`
 -- AUTO_INCREMENT for table `stylist`
 --
 ALTER TABLE `stylist`
-  MODIFY `idhairstylist` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idhairstylist` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

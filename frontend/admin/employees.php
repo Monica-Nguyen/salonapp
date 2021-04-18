@@ -4,8 +4,6 @@ include 'admin.php';
 
 ?>
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
-
 <form action="addEmployee.php"><tr>
 <td><input type="submit" value="Add an Employee" name="addEmployee"></td>
 </tr></form>

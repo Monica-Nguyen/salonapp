@@ -3,7 +3,7 @@ include '../../backend/database.php';
 include 'admin.php'; 
 
 ?>
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
+
 <form action="addStylist.php"><tr>
 <td><input type="submit" value="Add a Stylist" name="addSalon"></td>
 </tr></form>
@@ -22,6 +22,6 @@ include 'admin.php';
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-<!-- <form action="editSalon.php"><tr>
-<td><input type="submit" value="Edit Salon" name="editSalons"></td>
-</tr></form>     -->
+<form action="editStylist.php"><tr>
+<td><input type="submit" value="Edit Stylist" name="editSalons"></td>
+</tr></form>
