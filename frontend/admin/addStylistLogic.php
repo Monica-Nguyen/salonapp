@@ -5,11 +5,16 @@
     $conn = connect();
 
     
-    $employeenumber = $_POST['employeenumber'];
+    $employeeName = $_POST['employeeName'];
     
+    $getEmployeeID = "SELECT employeeid FROM employee where firstname='".$employeeName."'";
+    $result = mysqli_query($conn, $getEmployeeID);
+    $employeeno = 0;
+    while($row = mysqli_fetch_array($result)){
+        $employeeno = $row['employeeid'];
+    }
 
-
-    $sql = "INSERT INTO stylist(employeenumber) VALUES ('$employeenumber')";
+    $sql = "INSERT INTO stylist(employeenumber) VALUES ('$employeeno')";
 
     header("Content-Type: JSON");
     if (mysqli_query($conn, $sql)) {
@@ -18,7 +23,7 @@
 
         $output = array();
 
-        array_push($output, $employeenumber);
+        array_push($output, $employeeno);
 
         echo json_encode($output, JSON_PRETTY_PRINT);
 

@@ -18,11 +18,14 @@ Add a Stylist:
  <form action="addStylistLogic.php" method="POST">
   <table>
 
-   <tr>
-    <td>Employee Number : </td>
-    <td><input type="int" name="employeenumber" required></td>
+  <tr>
+    <td>Employee: </td>
+    <td>
+    <select name="employeeName"> 
+        <?php include '../employee/getEmployeeNames.php'?>
+      </select>
+    </td>
    </tr>
-   <tr>
    <tr>
     <td><input type="submit" value="Submit" name="SubmitButton"></td>
     </tr>
