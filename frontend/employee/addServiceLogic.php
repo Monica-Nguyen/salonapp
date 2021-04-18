@@ -4,9 +4,9 @@
 
     $conn = connect();
 
-    $serviceOffered = $_POST['serviceOffered'];
-    $serviceCost = $_POST['serviceCost'];
-    $equipmentName = $_POST['equipmentName'];
+    $serviceOffered = $_POST['serviceOffered'] ?? NULL;
+    $serviceCost = $_POST['serviceCost'] ?? NULL;
+    $equipmentName = $_POST['equipmentName'] ?? NULL;
 
     $getEquipmentID = "SELECT equipmentid FROM equipment where name ='".$equipmentName."'";
     $result = mysqli_query($conn, $getEquipmentID);
