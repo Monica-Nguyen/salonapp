@@ -11,10 +11,10 @@
 
     if (mysqli_query($conn, $sql)) {
         header("Content-Type: JSON");
-        echo json_encode("Employee removed successfully!", JSON_PRETTY_PRINT);
+        echo json_encode("Hair Characteristics removed successfully!", JSON_PRETTY_PRINT);
 
     } else {
-        echo "Error deleting employee record: ". mysqli_error($conn);
+        echo "Error deleting hair characteristics record: ". mysqli_error($conn);
     }
 
     mysqli_close($conn);
